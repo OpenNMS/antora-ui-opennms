@@ -191,6 +191,33 @@ html.is-clipped--nav {
   max-height: calc(50% + var(--drawer-height));
 }
 
+/*
+ * A component without navigation (e.g. the site start page) renders no menu
+ * panel, so the explore panel is the only panel in the sidebar. Rather than
+ * leaving it anchored as a drawer in the bottom half of an otherwise empty
+ * sidebar, let it fill the sidebar.
+ */
+.nav .panels > .nav-panel-explore.is-active:only-child {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  max-height: none;
+}
+
+.nav .panels > .nav-panel-explore.is-active:only-child .components {
+  min-height: 0;
+}
+
+/* There is no menu panel to toggle to, so the context header is not clickable. */
+.nav .panels > .nav-panel-explore.is-active:only-child .context {
+  cursor: default;
+}
+
+.nav .panels > .nav-panel-explore.is-active:only-child .context .version {
+  background-image: none;
+  padding-right: 0.5rem;
+}
+
 .nav-panel-explore .context {
   font-size: calc(15 / var(--rem-base) * 1rem);
   flex-shrink: 0;
